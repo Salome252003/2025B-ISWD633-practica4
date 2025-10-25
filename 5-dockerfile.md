@@ -59,11 +59,46 @@ No olvides verificar en qué directorio se encuentra el archivo Dockerfile
 **¿Cuántos pasos se han ejecutado?**
 # RESPONDER 
 
+Se han ejecutado 6 pasos, los cuales son: 
+
+1. From
+2. Run (update9
+3. Run (install httpd)
+4. Copy
+5. Expose
+6. CMD
+
 ### Inspeccionar la imagen creada
 # COMPLETAR CON UNA CAPTURA
 
+Para inpeccionar la imagen creada, colocamos el siguiente comando: 
+
+docker image inspect mi_apache:1.0
+
+<img width="1353" height="950" alt="image" src="https://github.com/user-attachments/assets/d26099ff-dfec-4bcb-ac3b-0bb83b9198a2" />
+
+<img width="957" height="325" alt="image" src="https://github.com/user-attachments/assets/3fa7565e-c29a-4270-a0d0-f41595d9f0f5" />
+
+
 **Modificar el archivo index.html para incluir su nombre y luego crear una nueva versión de la imagen anterior**
 **¿Cuántos pasos se han ejecutado? ¿Observa algo diferente en la creación de la imagen**
+
+Para esto vamos al index.html y lo abrimos como bloc de notas 
+
+<img width="1617" height="427" alt="image" src="https://github.com/user-attachments/assets/b71590cc-73f7-420e-b3e7-f2d7f407e63e" />
+
+
+Luego colocamos el siguiente comando 
+
+docker build -t mi_apache:2.0 .
+
+<img width="1883" height="392" alt="image" src="https://github.com/user-attachments/assets/e9dacf61-98a1-4d12-9d9f-34b7846d3dc3" />
+
+------------------------------------------------------------------------------------------------------------------------------------------
+Por lo tanto se han ejecutado los mismos 6 pasos del Dockerfile
+
+Sí, se observa que al reconstruir la imagen después de modificar el archivo index.html, Docker reutiliza las capas anteriores que no han cambiado y solo vuelve a ejecutar los pasos desde el momento en que detecta cambios (en este caso, el paso COPY y los que le siguen)
+
 
 ## Mecanismo de caché
 Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso de construcción y evitar la repetición de pasos que no han cambiado. Cada instrucción en un Dockerfile crea una capa en la imagen final. Docker intenta reutilizar las capas de una construcción anterior si no han cambiado, lo que reduce significativamente el tiempo de construcción.
@@ -81,8 +116,14 @@ Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso
 ### ¿Con que puerto host se está realizando el mapeo?
 # COMPLETAR CON LA RESPUESTA
 
+<img width="1842" height="145" alt="image" src="https://github.com/user-attachments/assets/27de10c6-6a2d-4200-8413-df8767b6f8bc" />
+
+El contenedor servidor-apache-v2 mapeó automáticamente el puerto 80 del contenedor al puerto 32768 del host.
+
 **¿Qué es una imagen huérfana?**
 # COMPLETAR CON LA RESPUESTA
+
+Una imagen huérfana es una imagen de Docker que ya no está asociada a ningún contenedor, generalmente creada durante builds interrumpidos o versiones antiguas, y ocupa espacio innecesario en el sistema.
 
 ### Identificar imágenes huérfanas
 ```

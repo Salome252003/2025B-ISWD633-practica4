@@ -11,6 +11,9 @@ Antes de realizar la práctica, solo tenía un conocimiento básico sobre Docker
 
 Después de cla práctica, comprendí cómo construir imágenes desde un Dockerfile, cómo Docker utiliza la caché por capas para optimizar el proceso de build, y cómo ejecutar y mapear contenedores correctamente. También aprendí a limitar recursos (CPU, memoria y swap) para evitar sobrecargas.
 
+
+## Soluciones a problemas
+
 Durante la práctica enfrenté un problema con los repositorios de CentOS 7 que impedía ejecutar yum update, el cual solucioné modificando el Dockerfile para usar los repositorios archivados de vault.centos.org. 
 
 <img width="1275" height="363" alt="image" src="https://github.com/user-attachments/assets/94242d56-49ed-42c7-817e-92b0b533d87a" />
